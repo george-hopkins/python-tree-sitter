@@ -1,5 +1,7 @@
 # python-tree-sitter
 
+[![](https://img.shields.io/travis/george-hopkins/python-tree-sitter/master.svg)](https://travis-ci.org/george-hopkins/python-tree-sitter)
+
 Python bindings for [tree-sitter](https://tree-sitter.github.io/tree-sitter)
 
 

@@ -49,6 +49,7 @@ def language_builder(package, function, dir):
     sources = [str(language_root / f) for f in language_gyp['sources'] if f != 'src/binding.cc']
     include_dirs = [str(runtime_root / d) for d in runtime_gyp['include_dirs']]
     include_dirs.extend([str(language_root / d) for d in language_gyp['include_dirs']])
+    compile_args = language_gyp.get('cflags_c', [])
 
     builder = FFI()
     builder.include(runtime_builder())
@@ -59,7 +60,8 @@ def language_builder(package, function, dir):
 const TSLanguage *{}(void);
 '''.format(function),
         sources=sources,
-        include_dirs=include_dirs)
+        include_dirs=include_dirs,
+        extra_compile_args=compile_args)
 
     return builder
 
@@ -211,7 +213,8 @@ def runtime_builder():
     ''')
     builder.set_source('treesitter._bindings', '#include <tree_sitter/runtime.h>',
         include_dirs=[str(root / s) for s in gyp_target['include_dirs']],
-        sources=[str(root / s) for s in gyp_target['sources']])
+        sources=[str(root / s) for s in gyp_target['sources']],
+        extra_compile_args=gyp_target.get('cflags_c', []))
 
     return builder
 
