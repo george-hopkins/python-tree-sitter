@@ -15,6 +15,7 @@ setuptools.setup(
     packages=setuptools.find_packages(),
     setup_requires=['cffi>=1.0.0'],
     cffi_modules=['treesitter/build.py:runtime_builder'],
+    install_requires=['cffi>=1.0.0'],
     classifiers=[
         'Programming Language :: Python :: 3',
         'License :: OSI Approved :: MIT License',
