@@ -3,9 +3,10 @@ language: python
 python:
   - "3.5"
   - "3.6"
-  - "3.7"
+  - "3.7-dev"
 
-install: ~
+install:
+  - pip install pycparser # https://github.com/eliben/pycparser/issues/251
 
 script:
   - (pip install . && cd example && python build.py && python example.py | diff -u ../tests/example.log -)
