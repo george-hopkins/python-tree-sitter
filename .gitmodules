@@ -1,6 +1,6 @@
-[submodule "vendor/tree-sitter"]
-	path = vendor/tree-sitter
+[submodule "treesitter/vendor"]
+	path = treesitter/vendor
 	url = https://github.com/tree-sitter/tree-sitter.git
-[submodule "vendor/tree-sitter-python"]
-	path = vendor/tree-sitter-python
+[submodule "example/vendor"]
+	path = example/vendor
 	url = https://github.com/tree-sitter/tree-sitter-python.git

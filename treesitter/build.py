@@ -1,4 +1,5 @@
 import ast
+from pkg_resources import resource_filename
 from pathlib import Path
 from cffi import FFI
 
@@ -29,7 +30,9 @@ def _load_gyp_node(node):
 
 
 def _runtime_root():
-    return Path(__file__).parent.parent / 'vendor' / 'tree-sitter'
+    if __name__ == '__cffi__':
+        return Path(__file__).parent / 'vendor'
+    return Path(resource_filename(__name__, 'vendor/'))
 
 
 def _gyp_target(path, target):
@@ -219,5 +222,5 @@ def runtime_builder():
     return builder
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     runtime_builder().compile(verbose=True)
