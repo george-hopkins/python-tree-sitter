@@ -29,6 +29,10 @@ class Tree():
     def root(self):
         return Node(self._tree, lib.ts_tree_root_node(self._tree))
 
+    def copy(self):
+        tree = ffi.gc(lib.ts_tree_copy(self._tree), lib.ts_tree_delete)
+        return Tree(tree)
+
 
 class Node():
     def __init__(self, tree, node):
